@@ -4,16 +4,17 @@ from main import app
 
 client = TestClient(app)
 
+
 def test_read_main():
     response = client.get("/")
     assert response.status_code == 200
     assert response.json() == {"message": "Hello World"}
-    
-    
+
+
 def test_read_predict_positive():
     response = client.post("/predict/",
-        json={"text": "альфабанк"}
-    )
+                           json={"text": "альфабанк"}
+                           )
     json_data = response.json() 
 
     assert response.status_code == 200
